@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion Table</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/series-label.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+</head>
+<body>
+    <table class="accordion-table">
+        <thead>
+            <tr>
+                <th>Показатель</th>
+                <th class="bg-blue">Текущий день</th>
+                <th>Вчера</th>
+                <th>Этот день недели</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="accordion-header active">
+                <td>Выручка, руб</td>
+                <td class="bg-blue">560 521</td>
+                <td class="bg-green percent">480 521 <span class="percentage">4%</span></td>
+                <td class="bg-red">4 805 121</td>
+            </tr>
+            <tr class="accordion-content">
+                <td colspan="4">
+                    <div class="chart-placeholder">
+                        <div id="container" style="width: 700px; height: 100%;"></div></div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="subtable ">
+                <td>Наличные </td>
+                <td class="bg-blue">300 000</td>
+                <td class="bg-neutral percent">300 000 <span class="percentage">0%</span></td>
+                <td>300 000</td>
+            </tr>
+            <tr class="subtable ">
+                <td>Безналичный рачет</td>
+                <td class="bg-blue">100 000</td>
+                <td class="bg-neutral percent">100 000 <span class="percentage">0%</span></td>
+                <td>100 000</td>
+            </tr>
+            <tr class="subtable ">
+                <td>Кредитные карты</td>
+                <td class="bg-blue">100 521</td>
+                <td class="bg-neutral percent">100 521 <span class="percentage">0%</span></td>
+                <td>100 521</td>
+            </tr>
+            <tr class="accordion-header">
+                <td>Средний чек</td>
+                <td class="bg-blue">1 300</td>
+                <td class="bg-green percent">900 <span class="percentage">44%</span></td>
+                <td class="bg-green">900</td>
+            </tr>
+            <tr class="accordion-content">
+                <td colspan="4">
+                    <div class="chart-placeholder">
+                        <div id="container-2" style="width: 700px; height: 100%;"></div></div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="accordion-header">
+                <td>Средняя скидка, руб</td>
+                <td class="bg-blue">1 200</td>
+                <td class="bg-green percent">800 <span class="percentage">50%</span></td>
+                <td class="bg-green">800</td>
+            </tr>
+            <tr class="accordion-content">
+                <td colspan="4">
+                    <div class="chart-placeholder">
+                        <div id="container-3" style="width: 700px; height: 100%;"></div></div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="accordion-header">
+                <td>Удаление из чека (после печати), руб</td>
+                <td class="bg-blue">1 000</td>
+                <td class="bg-red percent">1 100 <span class="percentage">-9%</span></td>
+                <td class="bg-green">900</td>
+            </tr>
+            <tr class="accordion-content">
+                <td colspan="4">
+                    <div class="chart-placeholder">
+                        <div id="container-4" style="width: 700px; height: 100%;"></div></div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="accordion-header">
+                <td>Удаление из чека (до печати), руб</td>
+                <td class="bg-blue">1 300</td>
+                <td class="bg-neutral percent">1 300 <span class="percentage">0%</span></td>
+                <td class="bg-green">900</td>
+            </tr>
+            <tr class="accordion-content">
+                <td colspan="4">
+                    <div class="chart-placeholder">
+                        <div id="container-5" style="width: 700px; height: 100%;"></div></div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="accordion-header">
+                <td>Количество чеков</td>
+                <td class="bg-blue">34</td>
+                <td class="bg-red percent">36 <span class="percentage">-6%</span></td>
+                <td class="bg-neutral">34</td>
+            </tr>
+            <tr class="accordion-content">
+                <td colspan="4">
+                    <div class="chart-placeholder">
+                        <div id="container-6" style="width: 700px; height: 100%;"></div></div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="accordion-header">
+                <td>Количество гостей</td>
+                <td class="bg-blue">34</td>
+                <td class="bg-red percent">36 <span class="percentage">-6%</span></td>
+                <td class="bg-green">32</td>
+            </tr>
+            <tr class="accordion-content">
+                <td colspan="4">
+                    <div class="chart-placeholder">
+                        <div id="container-7" style="width: 700px; height: 100%;"></div></div>
+                    </div>
+                </td>
+            </tr>
+            <tr class="subtable accordion-header">
+                <td>sub-menu Количество гостей</td>
+                <td class="bg-blue">0</td>
+                <td class="bg-neutral percent">0 <span class="percentage">0%</span></td>
+                <td class="bg-green">0</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>

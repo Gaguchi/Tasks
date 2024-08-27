@@ -1,0 +1,409 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal__body_popupshowed {
+    -webkit-overflow-scrolling: touch !important
+}
+
+.modal .modal__wrapper {
+    padding: 40px 45px
+}
+
+.modal .modal__title {
+    margin-bottom: 11px
+}
+
+.modal .modal__text-wrapper {
+    margin-bottom: 24px
+}
+
+.modal .modal__text {
+    margin-top: 20px
+}
+
+.modal .modal__img {
+    width: 100%;
+    display: block;
+    margin-top: -1px
+}
+
+@media screen and (max-width:640px) {
+    .modal .modal__title {
+        margin-bottom: 6px
+    }
+
+    .modal .modal__text-wrapper {
+        margin-bottom: 14px
+    }
+
+    .modal .modal__wrapper {
+        padding: 20px
+    }
+}
+
+.modal .t-form__errorbox-item {
+    word-break: break-word
+}
+
+.modal .t-form__inputsbox_flex .t-form__errorbox-wrapper {
+    margin-bottom: 25px
+}
+
+.modal .t-form__inputsbox {
+    -webkit-transition: max-height 0.3s cubic-bezier(.19, 1, .22, 1);
+    transition: max-height 0.3s cubic-bezier(.19, 1, .22, 1);
+    max-height: 20000px
+}
+
+.modal .modal__inputsbox_hidden.t-form__inputsbox {
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0
+}
+
+.modal .t-input-group {
+    margin-bottom: 25px
+}
+
+.modal .t-input {
+    background-color: transparent;
+    -webkit-appearance: none
+}
+
+.modal .t-input::-ms-clear {
+    width: 0;
+    height: 0
+}
+
+.modal .t-input-block textarea {
+    padding-top: 17px;
+    background-color: transparent
+}
+
+.modal .t-input-block textarea.t-input_pvis {
+    padding-top: 26px
+}
+
+.modal .t-input-title {
+    padding-bottom: 5px
+}
+
+.modal .t-input-subtitle {
+    padding-bottom: 15px
+}
+
+.modal .t-input-group_rd .t-input-subtitle {
+    padding-bottom: 5px
+}
+
+.modal .t-inputtime,
+.modal .t-datepicker__wrapper {
+    max-width: 245px
+}
+
+.modal .t-input-group_inrow .t-inputtime,
+.modal .t-input-group_inrow .t-datepicker__wrapper {
+    max-width: 100%
+}
+
+.modal .t-form__submit {
+    display: block;
+    text-align: center;
+    vertical-align: middle;
+    height: 100%;
+    width: 100%;
+    margin-top: 25px
+}
+
+.modal .t-form__inputsbox_flex .t-form__submit {
+    margin-top: 0
+}
+
+.modal .t-form_bbonly .t-form__inputsbox_flex .t-form__submit {
+    margin-top: 0
+}
+
+.modal .t-submit {
+    width: 100%;
+    height: 54px;
+    -webkit-appearance: none
+}
+
+.modal .t-form_bbonly .t-input-title {
+    padding-bottom: 0;
+    margin-bottom: 0
+}
+
+.modal .t-form_bbonly .t-input-subtitle {
+    padding-bottom: 0;
+    padding-top: 5px
+}
+
+.modal .t-form__inputsbox .t-input-group_st .t-input-block {
+    display: none;
+    margin-bottom: 0
+}
+
+.modal .modal__form-bottom-text {
+    margin-top: 20px
+}
+
+@media screen and (max-width:640px) {
+    .modal .t-input-group {
+        margin-bottom: 20px
+    }
+
+    .modal .t-input-block textarea {
+        padding-top: 12px
+    }
+
+    .modal .t-submit,
+    .modal .t-input,
+    .modal .t-select {
+        height: 50px;
+        font-size: 16px
+    }
+
+    .modal .t-input {
+        padding: 0 14px
+    }
+
+    .modal .t-input__vis-ph {
+        top: 17px
+    }
+
+    .modal .t-input_pvis {
+        padding: 22px 20px 10px 20px
+    }
+
+    .modal .t-input-block textarea.t-input_pvis {
+        padding-top: 22px
+    }
+}
+
+@media screen and (max-width:480px) {
+
+    .modal .t-inputtime,
+    .modal .t-datepicker__wrapper {
+        max-width: 100%
+    }
+}
+
+@media screen and (max-width:560px) {
+    .modal .t-popup_show .t-popup__container {
+        max-width: 100%;
+        right: 0;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        padding-top: 50px;
+        margin: 0;
+        box-sizing: border-box;
+        min-height: 100vh;
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+        position: relative
+    }
+
+    .modal .t-popup {
+        padding: 0
+    }
+
+    .modal .t-popup__block-close {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 2;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 100%;
+        height: 50px;
+        background: #000
+    }
+
+    .modal .t-popup__block-close-button {
+        display: table-cell;
+        vertical-align: middle;
+        width: 16px;
+        margin-right: 10px;
+        padding: 10px;
+        font-size: 0;
+        text-align: right
+    }
+
+    .modal .t-popup__close-icon {
+        width: 16px;
+        height: 16px
+    }
+}
+
+.t-body_popupshowed {
+    height: 100vh;
+    min-height: 100vh;
+    overflow: hidden
+}
+
+.t-popup {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow-y: auto;
+    opacity: 0;
+    -webkit-transition: opacity ease-in-out .3s;
+    -moz-transition: opacity ease-in-out .3s;
+    -o-transition: opacity ease-in-out .3s;
+    transition: opacity ease-in-out .3s;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    padding: 0 20px;
+    background-color: rgba(0, 0, 0, .6);
+    z-index: 9999999;
+    display: none;
+    outline: 0
+}
+
+.t-popup.t-popup_show {
+    opacity: 1
+}
+
+.t-popup__container {
+    background: #fff;
+    margin: 0 auto;
+    width: auto;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    left: 20px;
+    z-index: 1;
+    cursor: default;
+    -moz-transform: translateY(-30%) scale(.9);
+    -ms-transform: translateY(-30%) scale(.9);
+    -webkit-transform: translateY(-30%) scale(.9);
+    -o-transform: translateY(-30%) scale(.9);
+    transform: translateY(-30%) scale(.9)
+}
+
+@media all and (-ms-high-contrast:none),
+(-ms-high-contrast:active) {
+    .t-popup__container {
+        width: 100%
+    }
+}
+
+.t-popup__container-animated {
+    -webkit-transition: transform ease-in-out .3s;
+    -moz-transition: transform ease-in-out .3s;
+    -o-transition: transform ease-in-out .3s;
+    transition: transform ease-in-out .3s
+}
+
+.t-popup_show .t-popup__container {
+    -moz-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    -o-transform: translateY(-50%);
+    transform: translateY(-50%)
+}
+
+.t-popup__container.t-popup__container-static {
+    margin: 65px auto;
+    top: 0;
+    position: relative;
+    left: auto;
+    right: auto;
+    width: 100%;
+    -moz-transform: translateY(30%) scale(.9);
+    -ms-transform: translateY(30%) scale(.9);
+    -webkit-transform: translateY(30%) scale(.9);
+    -o-transform: translateY(30%) scale(.9);
+    transform: translateY(30%) scale(.9)
+}
+
+.t-popup_show .t-popup__container.t-popup__container-static {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0)
+}
+
+.t-popup__close {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    width: 23px;
+    height: 23px;
+    cursor: pointer;
+    -webkit-transition: opacity ease-in-out .3s;
+    -moz-transition: opacity ease-in-out .3s;
+    -o-transition: opacity ease-in-out .3s;
+    transition: opacity ease-in-out .3s;
+    z-index: 9
+}
+
+@media (min-width:429px) and (hover),
+(min-width:0\0) {
+    .t-popup__close:hover {
+        opacity: .7
+    }
+}
+
+.t-popup__block-close {
+    top: 10px;
+    right: 10px;
+    width: 43px;
+    height: 43px
+}
+
+.t-popup__block-close-button {
+    width: 23px;
+    padding: 10px;
+    font-size: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer
+}
+
+.t-body_scroll-locked {
+    position: fixed;
+    left: 0;
+    width: 100%
+}

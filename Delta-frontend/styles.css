@@ -1,0 +1,109 @@
+body {
+    font-family: monospace;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    text-align: -webkit-center;
+}
+
+.accordion-table th.bg-blue {
+    background-color: #e1f4ff;
+}
+
+.accordion-table td.bg-blue {
+    background-color: #e1f4ff;
+}
+
+.accordion-table td.bg-green {
+    background-color: #e1ffe7;
+}
+
+.accordion-table td.bg-red {
+    background-color: #ffe1e1;
+}
+
+
+.accordion-table td.bg-neutral {
+    background-color: #f2f2f2;
+}
+
+.accordion-table {
+    width: 100%;
+    max-width: 800px;
+    border-collapse: collapse;
+}
+
+.accordion-table th:first-child{
+    width: 300px; 
+    text-align: center;
+}
+
+.accordion-table td:first-child {
+    width: 300px; 
+    text-align: left;
+}
+
+.accordion-table th,
+.accordion-table td {
+    border: 5px solid #fff;
+    padding: 8px;
+    padding-right: 20px;
+    text-align: right;
+    font-weight: normal;
+    width: 100px;
+}
+
+
+.accordion-table th {
+    background-color: #f2f2f2;
+    text-align: center;
+    padding: 10px;
+}
+.accordion-table td {
+    background-color: #f2f2f2;
+}
+
+.accordion-table td.percent {
+    padding: 10px;
+}
+
+.bg-green .percentage,
+.bg-neutral .percentage {
+    color: green;
+    font-weight: bold;
+}
+
+.bg-red .percentage {
+    color: red;
+    font-weight: bold;
+}
+
+.accordion-header {
+    cursor: pointer;
+}
+
+.accordion-header:hover {
+    background-color: #f5f5f5;
+}
+
+.accordion-content {
+    display: none;
+}
+
+.chart-placeholder {
+    height: 500px;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-style: italic;
+    color: #666;
+}
+
+.subtable {
+    display: none;
+}
+
+.subtable td:first-child {
+    padding-left: 20px;
+}
