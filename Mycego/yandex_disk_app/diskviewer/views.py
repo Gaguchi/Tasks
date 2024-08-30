@@ -3,8 +3,6 @@ from django.shortcuts import render
 from django.http import FileResponse, Http404
 from django.views import View
 
-# OAuth token for Yandex Disk API
-OAUTH_TOKEN = 'y0_AgAAAAA1lylmAADLWwAAAAEPHDhfAABItyO1Fk1HWpf27WAhsB6UU5eAlg'
 
 class FileListView(View):
     def get(self, request):
@@ -18,7 +16,6 @@ class FileListView(View):
             # Fetch the file list from Yandex Disk using OAuth
             headers = {
                 'Accept': 'application/json',
-                'Authorization': f'OAuth {OAUTH_TOKEN}',
             }
             response = requests.get(
                 f'https://cloud-api.yandex.net/v1/disk/public/resources?public_key={public_key}&path={path}',
