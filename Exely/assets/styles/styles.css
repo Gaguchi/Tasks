@@ -6,7 +6,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(180deg, rgba(74, 117, 161, 0.1019607843), #4975A1), url(../images/bg.svg);
+  background: linear-gradient(180deg, rgba(74, 117, 161, 0.05), #4975A1), url(../images/bg.svg);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -27,11 +27,6 @@ header {
   justify-content: space-around;
   flex-wrap: wrap;
 }
-@media (min-width: 768px) {
-  .cards {
-    flex-wrap: nowrap;
-  }
-}
 
 .card {
   background-color: #f8f9fa;
@@ -42,7 +37,7 @@ header {
   flex-direction: row;
   align-content: flex-end;
   flex-wrap: wrap;
-  flex: 1 1 250px; /* Flex-grow, flex-shrink, and flex-basis */
+  flex: 1 1 250px;
   max-width: 372px;
   min-height: 372px;
   text-align: left;
@@ -58,7 +53,7 @@ header {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(10, 34, 64, 0.1019607843), #0A2240);
+  background: linear-gradient(180deg, rgba(10, 34, 64, 0.1), #0A2240);
   border-radius: 10px;
   z-index: 0;
 }
@@ -111,7 +106,7 @@ header {
   margin-top: auto;
   width: 100%;
 }
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .card .card-grid {
     flex-direction: row;
   }
@@ -126,7 +121,7 @@ header {
 }
 .card .card-grid .left-section p {
   margin: 0;
-  font-weight: bold;
+  font-weight: normal;
 }
 .card .card-grid .left-section p:nth-of-type(2) {
   font-family: "Roboto", sans-serif;

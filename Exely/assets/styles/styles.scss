@@ -3,8 +3,8 @@ $primary-color-2: #FF4B77;
 $primary-color-3: #D8003F;
 $secondary-color: #3C3E43;
 $accent-color: #FF7647;
-$gradient-1: linear-gradient(180deg, #0a22401a , #0A2240);
-$gradient-2: linear-gradient(180deg, #4a75a11a , #4975A1);
+$gradient-1: linear-gradient(180deg, rgba(10, 34, 64, 0.1), #0A2240);
+$gradient-2: linear-gradient(180deg, rgba(74, 117, 161, 0.05), #4975A1); 
 $card-bg: #f8f9fa;
 $card-border: #dee2e6;
 
@@ -16,7 +16,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background:$gradient-2, url(../images/bg.svg);
+    background: $gradient-2, url(../images/bg.svg); 
     background-size: cover;
     background-position: center;
     background-attachment: fixed; 
@@ -37,9 +37,9 @@ header {
     justify-content: space-around;
     flex-wrap: wrap;
 
-    @media (min-width: 768px) {
-        flex-wrap: nowrap;
-    }
+    // @media (min-width: 768px) {
+    //     flex-wrap: nowrap;
+    // }
 }
 
 .card {
@@ -51,7 +51,7 @@ header {
     flex-direction: row;
     align-content: flex-end;
     flex-wrap: wrap;
-    flex: 1 1 250px; /* Flex-grow, flex-shrink, and flex-basis */
+    flex: 1 1 250px; 
     max-width: 372px;
     min-height: 372px;
     text-align: left;
@@ -128,7 +128,7 @@ header {
         margin-top: auto;
         width: 100%;
 
-        @media (min-width: 768px) {
+        @media (min-width: 1025px) {
             flex-direction: row;
         }
 
@@ -143,13 +143,13 @@ header {
 
             p {
                 margin: 0;
-                font-weight: bold;
+                font-weight: normal;
 
                 &:nth-of-type(2) {
                     font-family: 'Roboto', sans-serif;
                     font-size: 20px;
 
-                    span{
+                    span {
                         font-size: 24px;
                     }
 
