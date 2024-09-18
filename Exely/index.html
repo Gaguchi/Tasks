@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple HTML Page</title>
     <link rel="stylesheet" href="assets/styles/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container-centered">
@@ -14,7 +13,11 @@
         </header>
         <ul class="cards">
             <li class="card">
-                <img src="assets/pictures/pic1.jpg" alt="" class="card__background">
+                <picture class="card__background">
+                    <source srcset="assets/pictures/pic1-large.jpg" media="(min-width: 1200px)">
+                    <source srcset="assets/pictures/pic1-medium.jpg" media="(min-width: 768px)">
+                    <img src="assets/pictures/pic1-small.jpg" alt="Представительский люкс" width="372" height="372">
+                </picture>
                 <div class="card__content">
                     <div class="card__top">
                         <h2 class="card__title"><a href="#" class="card__link">Представительский люкс</a></h2>
@@ -40,7 +43,12 @@
             </li>
             <li class="card">
                 <img src="assets/images/discount.svg" class="discount-sticker" alt="Гарантия лучшей цены!">
-                <img src="assets/pictures/pic2.jpg" alt="" class="card__background">
+                <div class="discount-text">Гарантия лучшей цены!</div>
+                <picture class="card__background">
+                    <source srcset="assets/pictures/pic2-large.jpg" media="(min-width: 1200px)">
+                    <source srcset="assets/pictures/pic2-medium.jpg" media="(min-width: 768px)">
+                    <img src="assets/pictures/pic2-small.jpg" alt="Дуплекс" width="372" height="372">
+                </picture>
                 <div class="card__content">
                     <div class="card__top">
                         <h2 class="card__title"><a href="#" class="card__link">Дуплекс</a></h2>
@@ -65,7 +73,11 @@
                 </div>
             </li>
             <li class="card">
-                <img src="assets/pictures/pic3.jpg" alt="" class="card__background">
+                <picture class="card__background">
+                    <source srcset="assets/pictures/pic3-large.jpg" media="(min-width: 1200px)">
+                    <source srcset="assets/pictures/pic3-medium.jpg" media="(min-width: 768px)">
+                    <img src="assets/pictures/pic3-small.jpg" alt="Бизнес-люкс" width="372" height="372">
+                </picture>
                 <div class="card__content">
                     <div class="card__top">
                         <h2 class="card__title"><a href="#" class="card__link">Бизнес-люкс</a></h2>

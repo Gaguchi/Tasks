@@ -24,6 +24,9 @@
 21. "оплате" является ссылкой https://disk.yandex.com/i/XTDirYNS3jF0pw
 22. По ТЗ в html документе не должно быть стилей https://disk.yandex.com/d/4uawK9i3yC5pQA
 23. Неверно реализован мотиватор - текст вставлен в виде изображения. При таком подходе его нельзя будет поменять (представьте, что сайт мультиязычный), текст не индексируется поисковым роботом и не будет прочитан скринридером.
+
+//Above everything is done
+
 24. Верстка не соответствует styleguide, прошу обратить внимание на следующие критерии
 https://codeguide.academy/html-css.html#html-attr-order,
 https://codeguide.academy/html-css.html#html-validator
