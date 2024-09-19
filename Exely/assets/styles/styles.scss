@@ -201,16 +201,12 @@ header {
         left: -5px;
         opacity: 0;
         transition: left 0.3s ease, opacity 0.3s ease;
+    }
 
-        .card:hover & {
-            left: 10px;
-            opacity: 1;
-        }
-
-        .card--visited & {
-            left: 10px;
-            opacity: 1;
-        }
+    &:hover &__discount-sticker,
+    &--visited &__discount-sticker {
+        left: 10px;
+        opacity: 1;
     }
 
     &__background {
