@@ -67,21 +67,28 @@ body {
   text-align: center;
 }
 
-header {
+.header-title {
   margin-bottom: 20px;
-}
-header h1 {
   font-family: "Roboto", sans-serif;
   font-weight: normal;
-  font-size: 36px;
   display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
   -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
   -webkit-line-clamp: 1;
+  line-clamp: 1;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 36px;
 }
 @media (max-width: 320px) {
-  header h1 {
+  .header-title {
     font-size: 24px;
     font-weight: bold;
   }
@@ -123,8 +130,9 @@ header h1 {
 }
 @media (max-width: 320px) {
   .card {
-    min-height: 299px;
-    max-width: 240px;
+    min-height: 305px;
+    max-width: 246px;
+    padding: 21px;
   }
 }
 .card:hover {
@@ -159,13 +167,13 @@ header h1 {
   border-radius: 5px;
   font-family: "Open Sans", sans-serif;
 }
-.card__overlay-content a {
+.card__overlay-content .overlay-link {
   color: #ff4b77;
   font-weight: bold;
   text-decoration: none;
   cursor: pointer;
 }
-.card__overlay-content a:hover {
+.card__overlay-content .overlay-link:hover {
   text-decoration: underline;
 }
 .card--reserved .card__overlay {
@@ -198,18 +206,21 @@ header h1 {
 .card__button {
   padding: 15px;
   width: 100%;
+  background: #f91155;
+  color: white;
+  font-weight: bold;
   border: 0;
   border-radius: 5px;
-  font-family: "Open Sans", sans-serif;
   font-size: 16px;
-  font-weight: bold;
-  color: white;
-  background: #f91155;
+  font-family: "Open Sans", sans-serif;
   transition: box-shadow 0.3s ease;
 }
 @media (max-width: 320px) {
   .card__button {
+    padding: 14px;
     font-size: 14px;
+    line-height: 14px;
+    border-radius: 3px;
   }
 }
 .card__button:hover {
@@ -220,6 +231,10 @@ header h1 {
 .card__button:active {
   color: #f9637c;
   box-shadow: none;
+}
+.card--reserved .card__button {
+  background: #3c3e43;
+  pointer-events: none;
 }
 .card__title {
   font-family: "Roboto", sans-serif;
@@ -243,7 +258,7 @@ header h1 {
 .card__link:visited {
   color: rgba(255, 255, 255, 0.5);
 }
-.card__link:active {
+.card__link:visited {
   color: rgba(255, 255, 255, 0.5);
   text-decoration: none;
 }
@@ -296,13 +311,22 @@ header h1 {
 .card__description {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
   color: #ffffff;
+  font-size: 16px;
+  line-height: 29px;
   margin-bottom: 5px;
   display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
   -webkit-box-orient: vertical;
+  -moz-box-orient: vertical;
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -330,18 +354,19 @@ header h1 {
   margin-top: auto;
   width: 100%;
   position: relative;
+  align-items: center;
 }
 @media (max-width: 768px) {
   .card__bottom {
     flex-direction: column;
+    align-items: stretch;
   }
 }
 .card__left-section {
   flex: 1;
-  padding: 5px;
   max-width: 150px;
 }
-.card__left-section br {
+.card__left-section .br-element {
   height: 0;
 }
 .card__price {
@@ -364,29 +389,26 @@ header h1 {
     font-size: 17px;
   }
 }
-.card__price--large span {
+.card__price--large .currency {
   font-size: 24px;
+  color: #ff4b77;
 }
 @media (max-width: 320px) {
-  .card__price--large span {
+  .card__price--large .currency {
     font-size: 20px;
   }
 }
-.card__price--large span:first-of-type {
-  font-weight: bold;
-  color: #ff4b77;
-}
-.card__price--large span:last-of-type {
+.card__price--large .currency-symbol {
   color: #999999;
   font-weight: normal;
 }
 .card__right-section {
+  padding-top: 10px;
   flex: 1;
-  padding: 5px;
   align-content: center;
   text-align: center;
 }
-.card__right-section p {
+.card__right-section .right-section-text {
   margin: 0;
   display: -webkit-box;
   -webkit-box-orient: vertical;
