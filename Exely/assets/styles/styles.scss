@@ -1,56 +1,55 @@
-$primary-color-1: #F91155;
-$primary-color-2: #FF4B77;
-$primary-color-3: #D8003F;
-$secondary-color: #3C3E43;
-$accent-color: #FF7647;
-$gradient-1: linear-gradient(180deg, #0a22401a, #0A2240);
-$gradient-2: linear-gradient(180deg, #4a75a10d, #4975A1);
-$gradient-3: linear-gradient(180deg, #deedff99, #a6ccfa80);
+$primary-color-1: #f91155;
+$primary-color-2: #ff4b77;
+$primary-color-3: #d8003f;
+$secondary-color: #3c3e43;
+$accent-color: #ff7647;
+$gradient-1: linear-gradient(180deg, rgba(10, 34, 64, 0.1), #0a2240);
+$gradient-2: linear-gradient(180deg, rgba(74, 117, 161, 0.05), #4975a1);
+$gradient-3: linear-gradient(180deg, rgba(222, 237, 255, 0.6), rgba(166, 204, 250, 0.5));
 $card-bg: #f8f9fa;
 $card-border: #dee2e6;
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('../fonts/Roboto-Bold.ttf') format('truetype');
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Bold.ttf") format("truetype");
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Roboto';
-    src: url('../fonts/Roboto-Medium.ttf') format('truetype');
+    font-family: "Roboto";
+    src: url("../fonts/Roboto-Medium.ttf") format("truetype");
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Open Sans';
-    src: url('../fonts/OpenSans-Bold.ttf') format('truetype');
+    font-family: "Open Sans";
+    src: url("../fonts/OpenSans-Bold.ttf") format("truetype");
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Open Sans';
-    src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
+    font-family: "Open Sans";
+    src: url("../fonts/OpenSans-Regular.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 
-
 @font-face {
-    font-family: 'Open Sans';
-    src: url('../fonts/OpenSans-Light.ttf') format('truetype');
+    font-family: "Open Sans";
+    src: url("../fonts/OpenSans-Light.ttf") format("truetype");
     font-weight: 300;
     font-style: normal;
 }
-
 
 @keyframes slideInFromLeft {
     0% {
         transform: translateX(-10px);
         opacity: 0;
     }
+
     100% {
         transform: translateX(0);
         opacity: 1;
@@ -62,6 +61,7 @@ $card-border: #dee2e6;
         transform: translateX(0);
         opacity: 1;
     }
+
     100% {
         transform: translateX(-10px);
         opacity: 0;
@@ -69,36 +69,36 @@ $card-border: #dee2e6;
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
-    margin: 0;
-    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0;
+    padding: 0;
     min-height: 100vh;
-    background: $gradient-3, url(../images/bg.svg);
+    font-family: "Open Sans", sans-serif;
+    background: $gradient-3, url("../images/bg.svg");
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
 }
 
 .container-centered {
-    text-align: center;
     margin: 0 auto;
+    text-align: center;
 }
 
 header {
     margin-bottom: 20px;
 
-    & h1 {
-        font-family: 'Roboto', sans-serif;
+    h1 {
+        font-family: "Roboto", sans-serif;
         font-weight: normal;
+        font-size: 36px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;
         overflow: hidden;
         text-overflow: ellipsis;
-        font-size: 36px;
 
         @media (max-width: 320px) {
             font-size: 24px;
@@ -117,10 +117,7 @@ header {
 }
 
 .card {
-    background-color: rgba(255, 255, 255, 0);
-    border-radius: 10px;
-    padding: 24px;
-    margin: 10px;
+    position: relative;
     display: flex;
     flex-direction: row;
     align-content: flex-end;
@@ -129,10 +126,13 @@ header {
     max-width: 324px;
     min-height: 324px;
     min-width: 200px;
-    text-align: left;
-    position: relative;
-    color: white;
+    padding: 24px;
+    margin: 10px;
+    border-radius: 10px;
     overflow: hidden;
+    text-align: left;
+    color: white;
+    background-color: rgba(255, 255, 255, 0);
     transition: box-shadow 0.3s ease;
 
     @media (max-width: 768px) {
@@ -145,42 +145,45 @@ header {
         max-width: 240px;
     }
 
+    &:hover {
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+    }
+
     &::before {
-        content: '';
         position: absolute;
         top: 0;
         left: 0;
+        z-index: 1;
         width: 100%;
         height: 100%;
-        background: $gradient-1;
         border-radius: 10px;
-        z-index: 1;
+        background: $gradient-1;
+        content: "";
         transition: background 0.3s ease;
     }
-
 
     &__overlay {
         position: absolute;
         top: -12px;
         left: -24px;
+        z-index: 3;
         width: calc(100% + 48px);
         height: calc(100% + 36px);
-        background-color: $secondary-color;
         display: none;
         justify-content: center;
         align-items: center;
-        z-index: 3;
+        background-color: $secondary-color;
     }
 
     &__overlay-content {
-        font-family: 'Open Sans', sans-serif;
         padding: 20px;
         border-radius: 5px;
+        font-family: "Open Sans", sans-serif;
 
         a {
             color: $primary-color-2;
-            text-decoration: none;
             font-weight: bold;
+            text-decoration: none;
             cursor: pointer;
 
             &:hover {
@@ -193,18 +196,13 @@ header {
         display: flex;
     }
 
-    &:hover {
-        box-shadow: 0 4px 15px #00000099;
-    }
-
-
     &__discount-sticker {
         position: absolute;
         left: -5px;
         opacity: 0;
         transition: left 0.3s ease, opacity 0.3s ease;
 
-        .card:hover>& {
+        .card:hover & {
             left: 10px;
             opacity: 1;
         }
@@ -213,7 +211,6 @@ header {
             left: 10px;
             opacity: 1;
         }
-
     }
 
     &__background {
@@ -223,18 +220,8 @@ header {
         width: 100%;
         height: 100%;
         object-fit: cover;
+        background-color: #c9dbf1;
         z-index: 0;
-
-        img::after {  
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #c9dbf1;
-        }
     }
 
     &__content {
@@ -242,45 +229,40 @@ header {
         z-index: 2;
     }
 
-
-
     &__button {
         padding: 15px;
         width: 100%;
-        background: $primary-color-1;
-        color: white;
-        font-weight: bold;
         border: 0;
         border-radius: 5px;
+        font-family: "Open Sans", sans-serif;
         font-size: 16px;
-        font-family: 'Open Sans', sans-serif;
+        font-weight: bold;
+        color: white;
+        background: $primary-color-1;
         transition: box-shadow 0.3s ease;
 
         @media (max-width: 320px) {
             font-size: 14px;
         }
 
-
-
         &:hover {
             background: $primary-color-3;
-            box-shadow: 0 4px 15px #00000040;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
             cursor: pointer;
         }
 
         &:active {
-            color: #F9637C;
+            color: #f9637c;
             box-shadow: none;
         }
-
     }
 
     &__title {
-        font-family: 'Roboto', sans-serif;
+        font-family: "Roboto", sans-serif;
         font-weight: bold;
-        color: #ffffff;
-        margin-bottom: 0px;
         font-size: 24px;
+        color: #ffffff;
+        margin-bottom: 0;
 
         @media (max-width: 320px) {
             font-size: 20px;
@@ -299,14 +281,12 @@ header {
             color: rgba(255, 255, 255, 0.5);
         }
 
-
         &:active {
             color: rgba(255, 255, 255, 0.5);
             text-decoration: none;
         }
     }
 
-    
     &--reserved &__link {
         pointer-events: none;
         text-decoration: none;
@@ -336,16 +316,16 @@ header {
 
     .discount-text {
         position: absolute;
-        font-family: 'Roboto', sans-serif;
-        font-size: 14px;
-        font-weight: bold;
         top: 32px;
         left: 40px;
+        z-index: 6;
+        font-family: "Roboto", sans-serif;
+        font-size: 14px;
+        font-weight: bold;
         color: white;
         transform: translateX(-10px);
         transition: opacity 0.3s ease, transform 0.3s ease;
-        display: none; 
-        z-index: 6; 
+        display: none;
     }
 
     &:hover .discount-sticker,
@@ -364,13 +344,12 @@ header {
         display: none !important;
     }
 
-
     &__description {
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Open Sans", sans-serif;
         font-weight: 400;
-        color: #ffffff;
         font-size: 16px;
         line-height: 24px;
+        color: #ffffff;
         margin-bottom: 5px;
         display: -webkit-box;
         -webkit-box-orient: vertical;
@@ -385,10 +364,10 @@ header {
     }
 
     &__divider {
+        width: 100%;
+        margin: 10px 0;
         border: 0;
         border-top: 1px solid rgba(255, 255, 255, 0.2);
-        margin: 10px 0;
-        width: 100%;
     }
 
     &__top {
@@ -402,8 +381,8 @@ header {
         display: flex;
         flex-direction: row;
         margin-top: auto;
-        position: relative;
         width: 100%;
+        position: relative;
 
         @media (max-width: 768px) {
             flex-direction: column;
@@ -421,17 +400,17 @@ header {
     }
 
     &__price {
-        font-family: 'Open Sans', sans-serif;
-        margin: 0;
+        font-family: "Open Sans", sans-serif;
         font-weight: bold;
         font-size: 16px;
+        margin: 0;
 
         @media (max-width: 320px) {
             font-size: 14px;
         }
 
         &--large {
-            font-family: 'Roboto', sans-serif;
+            font-family: "Roboto", sans-serif;
             font-size: 19px;
 
             @media (max-width: 320px) {
@@ -473,226 +452,8 @@ header {
             text-overflow: ellipsis;
         }
     }
-
-
 }
-
-        // .card--reserved{
-        //     background: $secondary-color;
-        //     cursor: default;
-            
-        //     .card__link:hover {
-        //         text-decoration: none;
-        //         pointer-events: none;
-        //         color: inherit;
-        //         cursor: default;
-        //     }
-        // }
 
 .card--reserved::before {
     background: $gradient-1, rgba(255, 255, 255, 0.4);
-
 }
-
-
-// .card__overlay {
-//     position: absolute;
-//     top: -12px;
-//     left: -20px;
-//     width: calc(100% + 40px);
-//     height: calc(100% + 32px);
-//     background-color: $secondary-color;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     text-align: center;
-//     color: white;
-// }
-
-// .card__overlay-content {
-//     font-family: 'Open Sans', sans-serif;
-//     padding: 20px;
-//     border-radius: 5px;
-
-//     span {
-//         color: $primary-color-2;
-//         font-weight: bold;
-//     }
-// }
-
-// .card__discount-sticker {
-//     position: absolute;
-//     left: -5px;
-//     opacity: 0;
-//     transition: left 0.3s ease, opacity 0.3s ease;
-
-//     .card:hover>& {
-//         left: 10px;
-//         opacity: 1;
-//     }
-
-//     .card--visited & {
-//         left: 10px;
-//         opacity: 1;
-//     }
-// }
-
-// .card__background {
-//     position: absolute;
-//     top: 0;
-//     left: 0;
-//     width: 100%;
-//     height: 100%;
-//     object-fit: cover;
-//     border-radius: 11px;
-//     z-index: 0;
-// }
-
-// .card__content {
-//     position: relative;
-//     z-index: 2;
-// }
-
-// .card__button {
-//     padding: 15px;
-//     width: 100%;
-//     background: $primary-color-1;
-//     color: white;
-//     font-weight: bold;
-//     border: 0;
-//     border-radius: 5px;
-//     font-size: 17px;
-//     font-family: 'Open Sans', sans-serif;
-//     transition: box-shadow 0.3s ease;
-
-
-//     .card--reserved & {
-//         background: $secondary-color;
-//         pointer-events: none; // Disable button when reserved
-//     }
-
-//     &:hover {
-//         background: $primary-color-3;
-//         box-shadow: 0 4px 15px #00000040;
-//         cursor: pointer;
-//     }
-// }
-
-// .card__title {
-//     font-family: 'Roboto', sans-serif;
-//     font-weight: bold;
-//     color: #ffffff;
-//     margin-bottom: 0px;
-//     font-size: 27px;
-
-//     @media (max-width: 320px) {
-//         font-size: 20px;
-//     }
-// }
-
-// .card__link {
-//     color: inherit;
-//     text-decoration: none;
-
-//     &:hover {
-//         text-decoration: underline;
-//     }
-
-//     &:visited {
-//         color: rgba(255, 255, 255, 0.5);
-//     }
-// }
-
-// .card__description {
-//     color: #ffffff;
-//     font-size: 19px;
-//     line-height: 29px;
-//     margin-bottom: 5px;
-//     display: -webkit-box;
-//     -webkit-box-orient: vertical;
-//     -webkit-line-clamp: 2;
-//     overflow: hidden;
-//     text-overflow: ellipsis;
-
-//     @media (max-width: 320px) {
-//         font-size: 15px;
-//     }
-// }
-
-// .card__divider {
-//     border: 0;
-//     border-top: 1px solid rgba(255, 255, 255, 0.2);
-//     margin: 10px 0;
-//     width: 100%;
-// }
-
-// .card__top {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: flex-start;
-//     width: 100%;
-// }
-
-// .card__bottom {
-//     display: flex;
-//     flex-direction: column;
-//     margin-top: auto;
-//     position: relative;
-//     width: 100%;
-
-//     @media (min-width: 768px) {
-//         flex-direction: row;
-//     }
-// }
-
-// .card__left-section {
-//     flex: 1;
-//     padding: 5px;
-//     max-width: 150px;
-
-//     br {
-//         height: 0;
-//     }
-// }
-
-// .card__price {
-//     margin: 0;
-//     font-weight: normal;
-
-//     &--large {
-//         font-family: 'Roboto', sans-serif;
-//         font-size: 20px;
-
-//         @media (max-width: 320px) {
-//             font-size: 16px;
-//         }
-
-//         span {
-//             font-size: 24px;
-
-//             @media (max-width: 320px) {
-//                 font-size: 21px;
-//             }
-//         }
-
-//         span:first-of-type {
-//             font-weight: bold;
-//             color: $primary-color-2;
-//         }
-
-//         span:last-of-type {
-//             color: #999999;
-//         }
-//     }
-// }
-
-// .card__right-section {
-//     flex: 1;
-//     padding: 5px;
-//     align-content: center;
-//     text-align: center;
-
-//     p {
-//         margin: 0;
-//     }
-// }

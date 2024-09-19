@@ -49,22 +49,22 @@
   }
 }
 body {
-  font-family: "Open Sans", sans-serif;
-  margin: 0;
-  padding: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0;
+  padding: 0;
   min-height: 100vh;
-  background: linear-gradient(180deg, rgba(222, 237, 255, 0.6), rgba(166, 204, 250, 0.5019607843)), url(../images/bg.svg);
+  font-family: "Open Sans", sans-serif;
+  background: linear-gradient(180deg, rgba(222, 237, 255, 0.6), rgba(166, 204, 250, 0.5)), url("../images/bg.svg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
 
 .container-centered {
-  text-align: center;
   margin: 0 auto;
+  text-align: center;
 }
 
 header {
@@ -73,12 +73,12 @@ header {
 header h1 {
   font-family: "Roboto", sans-serif;
   font-weight: normal;
+  font-size: 36px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 1;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 36px;
 }
 @media (max-width: 320px) {
   header h1 {
@@ -97,10 +97,7 @@ header h1 {
 }
 
 .card {
-  background-color: rgba(255, 255, 255, 0);
-  border-radius: 10px;
-  padding: 24px;
-  margin: 10px;
+  position: relative;
   display: flex;
   flex-direction: row;
   align-content: flex-end;
@@ -109,10 +106,13 @@ header h1 {
   max-width: 324px;
   min-height: 324px;
   min-width: 200px;
-  text-align: left;
-  position: relative;
-  color: white;
+  padding: 24px;
+  margin: 10px;
+  border-radius: 10px;
   overflow: hidden;
+  text-align: left;
+  color: white;
+  background-color: rgba(255, 255, 255, 0);
   transition: box-shadow 0.3s ease;
 }
 @media (max-width: 768px) {
@@ -127,39 +127,42 @@ header h1 {
     max-width: 240px;
   }
 }
+.card:hover {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
 .card::before {
-  content: "";
   position: absolute;
   top: 0;
   left: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(10, 34, 64, 0.1019607843), #0A2240);
   border-radius: 10px;
-  z-index: 1;
+  background: linear-gradient(180deg, rgba(10, 34, 64, 0.1), #0a2240);
+  content: "";
   transition: background 0.3s ease;
 }
 .card__overlay {
   position: absolute;
   top: -12px;
   left: -24px;
+  z-index: 3;
   width: calc(100% + 48px);
   height: calc(100% + 36px);
-  background-color: #3C3E43;
   display: none;
   justify-content: center;
   align-items: center;
-  z-index: 3;
+  background-color: #3c3e43;
 }
 .card__overlay-content {
-  font-family: "Open Sans", sans-serif;
   padding: 20px;
   border-radius: 5px;
+  font-family: "Open Sans", sans-serif;
 }
 .card__overlay-content a {
-  color: #FF4B77;
-  text-decoration: none;
+  color: #ff4b77;
   font-weight: bold;
+  text-decoration: none;
   cursor: pointer;
 }
 .card__overlay-content a:hover {
@@ -168,16 +171,13 @@ header h1 {
 .card--reserved .card__overlay {
   display: flex;
 }
-.card:hover {
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-}
 .card__discount-sticker {
   position: absolute;
   left: -5px;
   opacity: 0;
   transition: left 0.3s ease, opacity 0.3s ease;
 }
-.card:hover > .card__discount-sticker {
+.card:hover .card__discount-sticker {
   left: 10px;
   opacity: 1;
 }
@@ -192,17 +192,8 @@ header h1 {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: 0;
-}
-.card__background img::after {
-  content: "";
-  display: block;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
   background-color: #c9dbf1;
+  z-index: 0;
 }
 .card__content {
   position: relative;
@@ -211,13 +202,13 @@ header h1 {
 .card__button {
   padding: 15px;
   width: 100%;
-  background: #F91155;
-  color: white;
-  font-weight: bold;
   border: 0;
   border-radius: 5px;
-  font-size: 16px;
   font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background: #f91155;
   transition: box-shadow 0.3s ease;
 }
 @media (max-width: 320px) {
@@ -226,20 +217,20 @@ header h1 {
   }
 }
 .card__button:hover {
-  background: #D8003F;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2509803922);
+  background: #d8003f;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
   cursor: pointer;
 }
 .card__button:active {
-  color: #F9637C;
+  color: #f9637c;
   box-shadow: none;
 }
 .card__title {
   font-family: "Roboto", sans-serif;
   font-weight: bold;
-  color: #ffffff;
-  margin-bottom: 0px;
   font-size: 24px;
+  color: #ffffff;
+  margin-bottom: 0;
 }
 @media (max-width: 320px) {
   .card__title {
@@ -285,16 +276,16 @@ header h1 {
 }
 .card .discount-text {
   position: absolute;
+  top: 32px;
+  left: 40px;
+  z-index: 6;
   font-family: "Roboto", sans-serif;
   font-size: 14px;
   font-weight: bold;
-  top: 32px;
-  left: 40px;
   color: white;
   transform: translateX(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
   display: none;
-  z-index: 6;
 }
 .card:hover .discount-sticker, .card:hover .discount-text {
   display: block;
@@ -309,9 +300,9 @@ header h1 {
 .card__description {
   font-family: "Open Sans", sans-serif;
   font-weight: 400;
-  color: #ffffff;
   font-size: 16px;
   line-height: 24px;
+  color: #ffffff;
   margin-bottom: 5px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
@@ -326,10 +317,10 @@ header h1 {
   }
 }
 .card__divider {
+  width: 100%;
+  margin: 10px 0;
   border: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-  margin: 10px 0;
-  width: 100%;
 }
 .card__top {
   display: flex;
@@ -341,8 +332,8 @@ header h1 {
   display: flex;
   flex-direction: row;
   margin-top: auto;
-  position: relative;
   width: 100%;
+  position: relative;
 }
 @media (max-width: 768px) {
   .card__bottom {
@@ -359,9 +350,9 @@ header h1 {
 }
 .card__price {
   font-family: "Open Sans", sans-serif;
-  margin: 0;
   font-weight: bold;
   font-size: 16px;
+  margin: 0;
 }
 @media (max-width: 320px) {
   .card__price {
@@ -387,7 +378,7 @@ header h1 {
 }
 .card__price--large span:first-of-type {
   font-weight: bold;
-  color: #FF4B77;
+  color: #ff4b77;
 }
 .card__price--large span:last-of-type {
   color: #999999;
@@ -409,7 +400,7 @@ header h1 {
 }
 
 .card--reserved::before {
-  background: linear-gradient(180deg, rgba(10, 34, 64, 0.1019607843), #0A2240), rgba(255, 255, 255, 0.4);
+  background: linear-gradient(180deg, rgba(10, 34, 64, 0.1), #0a2240), rgba(255, 255, 255, 0.4);
 }
 
 /*# sourceMappingURL=styles.css.map */
