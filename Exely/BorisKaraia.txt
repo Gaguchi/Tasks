@@ -1,0 +1,30 @@
+24.09.2024
+
+1. Верстка не проходит тест на переполняемость. При увеличении контента верстка ломается https://disk.yandex.com/i/yCrSnX-0sFXdIg
+2. Адаптация не соответствует пункту 3 ТЗ. Карточки должны перестраиваться по макету именно в тех breakpoint, которые указаны в макете
+3. Стили текста заголовка <h1> и отступы заголовка не по макету на всех трех разрешениях
+4. Отступы между карточками не соответствуют макету на всех трех разрешениях
+5. Фоновый цвет карточек (для случая, если изображение не загрузилось) не по макету https://disk.yandex.com/d/p-ZXtc90YHsJ6g
+6. Исходное изображение не должно иметь скруглённые уголки https://disk.yandex.com/d/RXZZCm7jQvO7VA
+8. Стили текстовых элементов в карточке номера не по макету, прошу перепроверить. Для многих элементов не указан line-height, из-за чего высота этих элементов не соответствует макету.
+9. Нет стилей состояния link pressed для заголовка карточки номера
+10. Нет стилей состояния pressed для ссылки "оплате" выбранного номера
+12. Градиент выбранного номера не соответствует макету. Например, реализация https://disk.yandex.com/d/PGWhX2YK-iSt4w, макет https://disk.yandex.com/i/txQ04nB5WHCfNA
+13. В состоянии Reserved все элементы карточки и сама карточка должны быть неактивны, кроме ссылки для проведения оплаты. Сейчас срабатывают hover эффект у карточки выбранного номера
+15. Остались элементы, которые размечены не по БЭМу, например, https://disk.yandex.com/i/28BezYZF-AMORw
+19. Не у всех тегов <img> явно задан размер https://codeguide.academy/html-css.html#html-img-sizes, прошу перепроверить
+25. Стили не соответствуют styleguide, прошу обратить внимание на следующие критерии
+https://codeguide.academy/html-css.html#css-structure
+https://codeguide.academy/html-css.html#css-multiselectors
+https://codeguide.academy/html-css.html#css-color-format
+https://codeguide.academy/html-css.html#css-fractions
+https://codeguide.academy/html-css.html#css-important
+https://codeguide.academy/html-css.html#css-order
+29. Добавлять инлайновые стили с помощью JS - не очень хорошая практика, используйте класс, который добавляется на карточку номера при его выборе https://disk.yandex.com/d/EM6Xusr5na1X6g
+30. Прошу указать более подходящий title для страницы, сейчас он неочевидный
+31. В верстке есть лишние обертки, например https://disk.yandex.com/d/QCFthmRQGr19Uw
+32. Breakpoint не соответствуют макету https://disk.yandex.com/d/iGKY2dwr2rHciA
+33. Фон кнопки в состоянии "pressed" не соответствует макету https://disk.yandex.com/d/_zraccg1HgQHIg
+34. Блок с информацией о том, что номер зарезервирован, не соответствует макету https://disk.yandex.com/i/uxVFx9kTDeQjEw, содержимое блока не умещается https://disk.yandex.com/d/rrz4fDhd-6hNMw
+35. Подключены шрифты, которые не используются, например https://disk.yandex.com/d/xuLu-Qbod1Z3WA
+36. В директории проекта есть лишние и неиспользуемые файлы, например https://disk.yandex.com/i/6JY0aDsWC7bomA

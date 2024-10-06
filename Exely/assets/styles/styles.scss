@@ -32,15 +32,22 @@ $card-border: #dee2e6;
 
 @font-face {
     font-family: "Open Sans";
-    src: url("../fonts/OpenSans-Regular.ttf") format("truetype");
+    src: url("../fonts/OpenSans-SemiBold.ttf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
 
 @font-face {
     font-family: "Open Sans";
-    src: url("../fonts/OpenSans-Light.ttf") format("truetype");
+    src: url("../fonts/OpenSans-Regular.ttf") format("truetype");
     font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Open Sans";
+    src: url("../fonts/OpenSans-Light.ttf") format("truetype");
+    font-weight: 200;
     font-style: normal;
 }
 
@@ -100,6 +107,8 @@ body {
     -moz-box-orient: vertical;
     -ms-flex-direction: column;
     -webkit-flex-direction: column;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
     flex-direction: column;
     -webkit-line-clamp: 1;
     line-clamp: 1;
@@ -189,13 +198,17 @@ body {
 
         .overlay-link {
             color: $primary-color-2;
-            font-weight: bold;
+            font-weight: 400;
             text-decoration: none;
             cursor: pointer;
 
             &:hover {
                 text-decoration: underline;
             }
+        }
+
+        .overlay-text{
+            margin: 0;
         }
     }
 
@@ -272,8 +285,11 @@ body {
         font-family: "Roboto", sans-serif;
         font-weight: bold;
         font-size: 24px;
+        line-height: 32px;
         color: #ffffff;
         margin-bottom: 0;
+        overflow: hidden;
+        max-height: calc(32*2px);
 
         @media (max-width: 320px) {
             font-size: 20px;
@@ -357,25 +373,15 @@ body {
 
     &__description {
         font-family: 'Open Sans', sans-serif;
-        font-weight: 400;
+        font-weight: 200;
         color: #ffffff;
         font-size: 16px;
         line-height: 29px;
         margin-bottom: 5px;
-        display: -webkit-box;
-        display: -moz-box;
-        display: -ms-flexbox;
-        display: -webkit-flex;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -moz-box-orient: vertical;
-        -ms-flex-direction: column;
-        -webkit-flex-direction: column;
-        flex-direction: column;
-        -webkit-line-clamp: 3;
-        line-clamp: 3;
-        overflow: hidden;
-        text-overflow: ellipsis;
+        overflow: hidden; 
+        position: relative;
+        max-height: 87px; 
+
 
         @media (max-width: 320px) {
             font-size: 14px;
@@ -423,7 +429,10 @@ body {
     &__price {
         font-family: "Open Sans", sans-serif;
         font-weight: bold;
+        overflow: hidden;
         font-size: 16px;
+        line-height: 24px;
+        max-height: 24px;
         margin: 0;
 
         @media (max-width: 320px) {
