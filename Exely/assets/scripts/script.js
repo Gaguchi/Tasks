@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cards.forEach(card => {
         const reserveButton = card.querySelector('.card__button');
-        const paymentLink = card.querySelector('.card__overlay-content a');
+        const paymentLink = card.querySelector('.card__overlay-content__overlay-link');
 
         if (reserveButton) {
             reserveButton.addEventListener('click', (event) => {
@@ -21,11 +21,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         card.addEventListener('click', (event) => {
-            if (!event.target.closest('.card__overlay-content a')) {
+            if (!event.target.closest('.card__overlay-content__overlay-link')) {
                 card.classList.remove('card--selected', 'card--reserved');
                 const overlay = card.querySelector('.card__overlay');
                 if (overlay) {
-                    overlay.style.display = 'none';
+                    overlay.classList.add('hidden');
                 }
             }
         });
@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 card.classList.add('card--reserved');
                 const overlay = card.querySelector('.card__overlay');
                 if (overlay) {
+                    overlay.classList.remove('hidden');
                     overlay.style.display = 'flex';
                 }
             }
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         card.addEventListener('mouseenter', () => {
             const overlay = card.querySelector('.card__overlay');
-            if (card.classList.contains('card--reserved') && (!overlay || overlay.style.display === 'none')) {
+            if (card.classList.contains('card--reserved') && (!overlay || overlay.classList.contains('hidden'))) {
                 card.classList.remove('card--reserved');
             }
         });

@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Roboto";
   src: url("../fonts/Roboto-Bold.ttf") format("truetype");
@@ -7,13 +8,7 @@
 @font-face {
   font-family: "Roboto";
   src: url("../fonts/Roboto-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Open Sans";
-  src: url("../fonts/OpenSans-Bold.ttf") format("truetype");
-  font-weight: 500;
+  font-weight: normal;
   font-style: normal;
 }
 @font-face {
@@ -26,12 +21,6 @@
   font-family: "Open Sans";
   src: url("../fonts/OpenSans-Regular.ttf") format("truetype");
   font-weight: 300;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Open Sans";
-  src: url("../fonts/OpenSans-Light.ttf") format("truetype");
-  font-weight: 200;
   font-style: normal;
 }
 @keyframes slideInFromLeft {
@@ -55,45 +44,42 @@
   }
 }
 body {
+  /* Позиционирование */
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 0;
   padding: 0;
   min-height: 100vh;
+  /* Типографика */
   font-family: "Open Sans", sans-serif;
+  /* Оформление */
   background: linear-gradient(180deg, rgba(222, 237, 255, 0.6), rgba(166, 204, 250, 0.5)), url("../images/bg.svg");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .container-centered {
   margin: 0 auto;
   text-align: center;
+  text-align: -webkit-center;
 }
 
 .header-title {
-  margin-bottom: 20px;
+  /* Типографика */
   font-family: "Roboto", sans-serif;
   font-weight: normal;
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -moz-box-orient: vertical;
-  -ms-flex-direction: column;
-  -webkit-flex-direction: column;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  flex-direction: column;
-  -webkit-line-clamp: 1;
-  line-clamp: 1;
-  overflow: hidden;
-  text-overflow: ellipsis;
   font-size: 36px;
+  line-height: 55px;
+  /* Оформление */
+  overflow: hidden;
+  max-height: 55px;
+  max-width: 300px;
 }
 @media (max-width: 320px) {
   .header-title {
@@ -103,15 +89,22 @@ body {
 }
 
 .cards {
+  /* Позиционирование */
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   max-width: 1350px;
   padding: 0;
-  gap: 10px;
+  gap: 32px;
+}
+@media (max-width: 768px) {
+  .cards {
+    flex-wrap: wrap;
+  }
 }
 
 .card {
+  /* Позиционирование */
   position: relative;
   display: flex;
   flex-direction: row;
@@ -120,13 +113,13 @@ body {
   flex: 1 1 calc(33.333% - 20px);
   max-width: 324px;
   min-height: 324px;
-  min-width: 200px;
   padding: 24px;
-  margin: 10px;
-  border-radius: 10px;
-  overflow: hidden;
+  /* Типографика */
   text-align: left;
   color: white;
+  /* Оформление */
+  border-radius: 10px;
+  overflow: hidden;
   background-color: rgba(255, 255, 255, 0);
   transition: box-shadow 0.3s ease;
 }
@@ -141,12 +134,25 @@ body {
     min-height: 305px;
     max-width: 246px;
     padding: 21px;
+    min-width: 200px;
   }
 }
 .card:hover {
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
 }
+.card img::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  background: #2d507c;
+}
 .card::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -155,10 +161,9 @@ body {
   height: 100%;
   border-radius: 10px;
   background: linear-gradient(180deg, rgba(10, 34, 64, 0.1), #0a2240);
-  content: "";
-  transition: background 0.3s ease;
 }
 .card__overlay {
+  /* Позиционирование */
   position: absolute;
   top: -12px;
   left: -24px;
@@ -168,31 +173,48 @@ body {
   display: none;
   justify-content: center;
   align-items: center;
+  /* Оформление */
   background-color: #3c3e43;
 }
 .card__overlay-content {
+  /* Позиционирование */
   padding: 20px;
-  border-radius: 5px;
+  /* Типографика */
   font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 21px;
+  /* Оформление */
+  border-radius: 5px;
 }
-.card__overlay-content .overlay-link {
-  color: #ff4b77;
+.card__overlay-content__link {
+  /* Типографика */
   font-weight: 400;
+  color: #ff4b77;
   text-decoration: none;
   cursor: pointer;
 }
-.card__overlay-content .overlay-link:hover {
+.card__overlay-content__link:hover {
   text-decoration: underline;
 }
-.card__overlay-content .overlay-text {
+.card__overlay-content__link:active {
+  opacity: 0.8;
+}
+.card__overlay-content__text {
+  /* Позиционирование */
   margin: 0;
+  /* Оформление */
+  overflow: hidden;
+  max-height: 21px;
 }
 .card--reserved .card__overlay {
   display: flex;
 }
 .card__discount-sticker {
+  /* Позиционирование */
   position: absolute;
   left: -5px;
+  /* Оформление */
   opacity: 0;
   transition: left 0.3s ease, opacity 0.3s ease;
 }
@@ -201,29 +223,35 @@ body {
   opacity: 1;
 }
 .card__background {
+  /* Позиционирование */
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  /* Оформление */
   object-fit: cover;
   background-color: #c9dbf1;
   z-index: 0;
 }
 .card__content {
+  /* Позиционирование */
   position: relative;
   z-index: 2;
 }
 .card__button {
+  /* Позиционирование */
   padding: 15px;
   width: 100%;
-  background: #f91155;
-  color: white;
+  /* Типографика */
+  font-family: "Open Sans", sans-serif;
   font-weight: bold;
+  font-size: 16px;
+  color: white;
+  /* Оформление */
+  background: #f91155;
   border: 0;
   border-radius: 5px;
-  font-size: 16px;
-  font-family: "Open Sans", sans-serif;
   transition: box-shadow 0.3s ease;
 }
 @media (max-width: 320px) {
@@ -240,7 +268,7 @@ body {
   cursor: pointer;
 }
 .card__button:active {
-  color: #f9637c;
+  color: #d8003f, #f9637c;
   box-shadow: none;
 }
 .card--reserved .card__button {
@@ -248,11 +276,13 @@ body {
   pointer-events: none;
 }
 .card__title {
+  /* Типографика */
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 24px;
   line-height: 32px;
   color: #ffffff;
+  /* Оформление */
   margin-bottom: 0;
   overflow: hidden;
   max-height: 64px;
@@ -263,18 +293,19 @@ body {
   }
 }
 .card__link {
+  /* Типографика */
   color: inherit;
   text-decoration: none;
 }
 .card__link:hover {
   text-decoration: underline;
 }
-.card__link:visited {
+.card__link:active {
   color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
 }
 .card__link:visited {
   color: rgba(255, 255, 255, 0.5);
-  text-decoration: none;
 }
 .card--reserved .card__link {
   pointer-events: none;
@@ -289,10 +320,15 @@ body {
   pointer-events: none;
   cursor: default;
 }
+.card--reserved:hover {
+  box-shadow: none;
+}
 .card .discount-sticker {
+  /* Позиционирование */
   position: absolute;
   top: 24px;
   left: 24px;
+  /* Оформление */
   display: none;
   z-index: 5;
   opacity: 0;
@@ -300,14 +336,19 @@ body {
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .card .discount-text {
+  /* Позиционирование */
   position: absolute;
   top: 32px;
   left: 40px;
-  z-index: 6;
+  /* Типографика */
   font-family: "Roboto", sans-serif;
-  font-size: 14px;
   font-weight: bold;
+  font-size: 14px;
   color: white;
+  /* Оформление */
+  max-width: 157px;
+  max-height: 17px;
+  overflow: hidden;
   transform: translateX(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
   display: none;
@@ -323,12 +364,16 @@ body {
   display: none !important;
 }
 .card__description {
+  /* Позиционирование */
+  margin-bottom: 10px;
+  margin-top: 10px;
+  /* Типографика */
   font-family: "Open Sans", sans-serif;
-  font-weight: 200;
-  color: #ffffff;
+  font-weight: 300;
   font-size: 16px;
-  line-height: 29px;
-  margin-bottom: 5px;
+  line-height: 24px;
+  color: #ffffff;
+  /* Оформление */
   overflow: hidden;
   position: relative;
   max-height: 87px;
@@ -340,18 +385,22 @@ body {
   }
 }
 .card__divider {
+  /* Позиционирование */
   width: 100%;
   margin: 10px 0;
+  /* Оформление */
   border: 0;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
 }
 .card__top {
+  /* Позиционирование */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   width: 100%;
 }
 .card__bottom {
+  /* Позиционирование */
   display: flex;
   flex-direction: row;
   margin-top: auto;
@@ -366,6 +415,7 @@ body {
   }
 }
 .card__left-section {
+  /* Позиционирование */
   flex: 1;
   max-width: 150px;
 }
@@ -373,11 +423,14 @@ body {
   height: 0;
 }
 .card__price {
+  /* Типографика */
   font-family: "Open Sans", sans-serif;
   font-weight: bold;
-  overflow: hidden;
   font-size: 16px;
   line-height: 24px;
+  color: #ffffff;
+  /* Оформление */
+  overflow: hidden;
   max-height: 24px;
   margin: 0;
 }
@@ -387,6 +440,7 @@ body {
   }
 }
 .card__price--large {
+  /* Типографика */
   font-family: "Roboto", sans-serif;
   font-size: 19px;
 }
@@ -409,7 +463,8 @@ body {
   font-weight: normal;
 }
 .card__right-section {
-  padding-top: 10px;
+  /* Позиционирование */
+  padding-top: 24px;
   flex: 1;
   align-content: center;
   text-align: center;
@@ -424,7 +479,7 @@ body {
 }
 
 .card--reserved::before {
-  background: linear-gradient(180deg, rgba(10, 34, 64, 0.1), #0a2240), rgba(255, 255, 255, 0.4);
+  background: linear-gradient(180deg, rgba(10, 34, 64, 0.05), rgba(10, 34, 64, 0.5)), rgba(255, 255, 255, 0.4);
 }
 
 /*# sourceMappingURL=styles.css.map */
