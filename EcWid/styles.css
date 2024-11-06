@@ -22,11 +22,21 @@ canvas {
     height: auto;
 }
 
-/* Add hover effect for clickable groups */
-#bonnet {
+g {
     cursor: pointer;
 }
 
-#bonnet:hover {
+#bonnet:hover path,
+#door_front:hover path,
+#door_back:hover path,
+#trunk:hover path {
     opacity: 0.8;
+    fill: rgba(0, 128, 0, 0.281) !important;
+    fill-opacity: 1 !important;
+}
+
+#wheels:hover circle {
+    opacity: 0.8;
+    fill: rgba(0, 128, 0, 0.281) !important;
+    fill-opacity: 1 !important;
 }
