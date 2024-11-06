@@ -1,0 +1,32 @@
+body {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #f0f0f0;
+}
+
+canvas {
+    max-width: 100%;
+    background: white;
+}
+
+#car-container {
+    max-width: 800px;
+    width: 100%;
+}
+
+#car-container svg {
+    width: 100%;
+    height: auto;
+}
+
+/* Add hover effect for clickable groups */
+#bonnet {
+    cursor: pointer;
+}
+
+#bonnet:hover {
+    opacity: 0.8;
+}
