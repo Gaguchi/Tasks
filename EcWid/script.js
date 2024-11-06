@@ -1,12 +1,13 @@
 function renderSVG(svgContent) {
     document.getElementById('car-container').innerHTML = svgContent;
     
-    document.getElementById('bonnet').addEventListener('click', handlePartClick);
-    document.getElementById('door_front').addEventListener('click', handlePartClick);
-    document.getElementById('door_back').addEventListener('click', handlePartClick);
-    document.getElementById('trunk').addEventListener('click', handlePartClick);
-    document.getElementById('wheels').addEventListener('click', handlePartClick);
+    const parts = ['bonnet', 'door_front', 'door_back', 'trunk', 'wheels'];
+
+    parts.forEach(part => {
+        document.getElementById(part).addEventListener('click', handlePartClick);
+    });
 }
+
 
 fetch('car.svg')
     .then(response => response.text())
@@ -32,24 +33,25 @@ const config = {
 };
 
 function checkCarAssembled(cart) {
-    let hasBonnet = false;
-    let hasDoorFront = false;
-    let hasDoorBack = false;
-    let hasTrunk = false;
-    let hasWheels = false;
+    const requiredParts = {
+        bonnet: false,
+        door_front: false,
+        door_back: false,
+        trunk: false,
+        wheels: false
+    };
 
-    for(let i = 0; i < cart.items.length; i++) {
-        const productId = cart.items[i].product.id;
-        
-        if(productId === parseInt(config.products.bonnet)) hasBonnet = true;
-        if(productId === parseInt(config.products.door_front)) hasDoorFront = true;
-        if(productId === parseInt(config.products.door_back)) hasDoorBack = true;
-        if(productId === parseInt(config.products.trunk)) hasTrunk = true;
-        if(productId === parseInt(config.products.wheels)) hasWheels = true;
-    }
+    cart.items.forEach(item => {
+        const productId = item.product.id;
+        for (const part in requiredParts) {
+            if (productId === parseInt(config.products[part])) {
+                requiredParts[part] = true;
+            }
+        }
+    });
 
-    const isAssembled = hasBonnet && hasDoorFront && hasDoorBack && hasTrunk && hasWheels;
-    if(isAssembled) {
+    const isAssembled = Object.values(requiredParts).every(Boolean);
+    if (isAssembled) {
         document.getElementById('car-container').innerHTML = '<h1>вы собрали автомобиль</h1>';
     }
     return isAssembled;
