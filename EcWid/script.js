@@ -1,3 +1,5 @@
+let storedSvgContent = ''; 
+
 function renderSVG(svgContent) {
     document.getElementById('car-container').innerHTML = svgContent;
     
@@ -8,16 +10,12 @@ function renderSVG(svgContent) {
     });
 }
 
-
 fetch('car.svg')
     .then(response => response.text())
     .then(svgContent => {
+        storedSvgContent = svgContent; 
         Ecwid.Cart.get(function(cart) {
-            if(checkCarAssembled(cart)) {
-                document.getElementById('car-container').innerHTML = '<h1>Car assembled!</h1>';
-            } else {
-                renderSVG(svgContent);
-            }
+            checkCarAssembled(cart);
         });
     });
 
@@ -53,6 +51,8 @@ function checkCarAssembled(cart) {
     const isAssembled = Object.values(requiredParts).every(Boolean);
     if (isAssembled) {
         document.getElementById('car-container').innerHTML = '<h1>вы собрали автомобиль</h1>';
+    } else {
+        renderSVG(storedSvgContent); 
     }
     return isAssembled;
 }
@@ -87,3 +87,11 @@ function handlePartClick(event) {
         Ecwid.Cart.addProduct(product);
     });
 }
+
+document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('ecwid-popup-closeButton')) {
+        Ecwid.Cart.get(function(cart) {
+            checkCarAssembled(cart);
+        });
+    }
+});
