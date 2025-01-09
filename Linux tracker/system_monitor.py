@@ -1,10 +1,9 @@
-# system_monitor.py
 import sys
 import psutil
 import time
 from datetime import datetime
 from PyQt6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout, 
-                            QPushButton, QProgressBar, QLabel)
+                            QPushButton, QLabel, QFrame)
 from PyQt6.QtCore import QTimer, Qt
 import sqlite3
 import os
@@ -12,139 +11,138 @@ import os
 class SystemMonitor(QMainWindow):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("System Resource Monitor")
-        self.setMinimumSize(500, 400)
+        self.setWindowTitle("Уровень загруженности")
+        self.setFixedSize(400, 300)
         
-        # Initialize database
-        self.db_path = 'system_metrics.db'
-        self.init_database()
+        # Set dark theme
+        self.setStyleSheet("""
+            QMainWindow {
+                background-color: #000000;
+                margin: 5px;
+            }
+            QFrame#wrapper {
+                background-color: #000000;
+                border: 1px solid #FFFFFF;
+                border-radius: 10px;
+                margin: 5px;
+            }
+            QFrame#main_frame {
+                background-color: #000000;
+                margin: 10px;
+            }
+            QLabel {
+                color: #FFFFFF;
+                font-family: monospace;
+                font-size: 14px;
+                background: transparent;
+            }
+            QPushButton {
+                color: #FFFFFF;
+                background-color: #000000;
+                border: 1px solid #FFFFFF;
+                border-radius: 5px;
+                padding: 5px 15px;
+                font-family: monospace;
+                min-width: 100px;
+            }
+        """)
         
-        # Initialize recording state
-        self.is_recording = False
-        self.record_start_time = None
+        # Create wrapper frame
+        self.wrapper = QFrame()
+        self.wrapper.setObjectName("wrapper")
+        self.setCentralWidget(self.wrapper)
         
-        # Create central widget and layout
-        central_widget = QWidget()
-        self.setCentralWidget(central_widget)
-        layout = QVBoxLayout(central_widget)
+        # Create main frame
+        self.main_frame = QFrame()
+        self.main_frame.setObjectName("main_frame")
         
-        # Create progress bars and labels
-        self.cpu_label = QLabel("CPU Usage: 0%")
-        self.cpu_bar = QProgressBar()
-        self.ram_label = QLabel("RAM Usage: 0%")
-        self.ram_bar = QProgressBar()
-        self.disk_label = QLabel("Disk Usage: 0%")
-        self.disk_bar = QProgressBar()
+        # Create wrapper layout
+        wrapper_layout = QVBoxLayout(self.wrapper)
+        wrapper_layout.setContentsMargins(0, 0, 0, 0)
+        wrapper_layout.addWidget(self.main_frame)
         
-        # Create record button and timer label
-        self.record_button = QPushButton("Start Recording")
-        self.record_button.clicked.connect(self.toggle_recording)
-        self.timer_label = QLabel("Recording Time: 00:00:00")
-        self.timer_label.setVisible(False)
+        # Create main layout
+        layout = QVBoxLayout(self.main_frame)
+        layout.setContentsMargins(20, 20, 20, 20)
+        layout.setSpacing(10)
+        
+        # Create labels
+        self.header = QLabel("Уровень загруженности:")
+        self.cpu_label = QLabel("ЦП: <Значение>")
+        self.ram_label = QLabel("ОЗУ: <Свободно>/<Всего>")
+        self.disk_label = QLabel("ПЗУ: <Свободно>/<Всего>")
+        
+        # Create button and timer
+        self.record_button = QPushButton("Начать запись")
+        self.timer_label = QLabel("")
+        self.timer_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
         
         # Add widgets to layout
-        for widget in [
-            self.cpu_label, self.cpu_bar,
-            self.ram_label, self.ram_bar,
-            self.disk_label, self.disk_bar,
-            self.record_button, self.timer_label
-        ]:
-            layout.addWidget(widget)
-            
-        # Style the progress bars
-        for bar in [self.cpu_bar, self.ram_bar, self.disk_bar]:
-            bar.setStyleSheet("""
-                QProgressBar {
-                    border: 2px solid grey;
-                    border-radius: 5px;
-                    text-align: center;
-                }
-                QProgressBar::chunk {
-                    background-color: #007bff;
-                    width: 10px;
-                    margin: 0.5px;
-                }
-            """)
+        layout.addWidget(self.header)
+        layout.addWidget(self.cpu_label)
+        layout.addWidget(self.ram_label)
+        layout.addWidget(self.disk_label)
+        layout.addStretch()
+        layout.addWidget(self.record_button, alignment=Qt.AlignmentFlag.AlignCenter)
+        layout.addWidget(self.timer_label)
+        
+        # Keep existing functionality
+        self.is_recording = False
+        self.record_start_time = None
+        self.record_button.clicked.connect(self.toggle_recording)
         
         # Set up update timer
         self.update_timer = QTimer()
         self.update_timer.timeout.connect(self.update_metrics)
-        self.update_timer.start(1000)  # Update every second
+        self.update_timer.start(1000)
 
-    def init_database(self):
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS system_metrics (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                cpu_usage REAL,
-                ram_usage REAL,
-                disk_usage REAL,
-                timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
-            )
-        ''')
-        conn.commit()
-        conn.close()
-    
-    def get_system_metrics(self):
-        cpu = psutil.cpu_percent(interval=None)
-        ram = psutil.virtual_memory().percent
-        disk = psutil.disk_usage('/').percent if os.name == 'posix' else psutil.disk_usage('C:\\').percent
-        return cpu, ram, disk
-    
-    def update_metrics(self):
-        cpu, ram, disk = self.get_system_metrics()
-        
-        # Update progress bars and labels
-        self.cpu_bar.setValue(int(cpu))
-        self.cpu_label.setText(f"CPU Usage: {cpu:.1f}%")
-        
-        self.ram_bar.setValue(int(ram))
-        self.ram_label.setText(f"RAM Usage: {ram:.1f}%")
-        
-        self.disk_bar.setValue(int(disk))
-        self.disk_label.setText(f"Disk Usage: {disk:.1f}%")
-        
-        # Record metrics if recording is active
-        if self.is_recording:
-            self.record_metrics(cpu, ram, disk)
-            self.update_timer_display()
-    
-    def record_metrics(self, cpu, ram, disk):
-        conn = sqlite3.connect(self.db_path)
-        cursor = conn.cursor()
-        cursor.execute(
-            "INSERT INTO system_metrics (cpu_usage, ram_usage, disk_usage) VALUES (?, ?, ?)",
-            (cpu, ram, disk)
-        )
-        conn.commit()
-        conn.close()
-    
     def toggle_recording(self):
         self.is_recording = not self.is_recording
-        
         if self.is_recording:
             self.record_start_time = datetime.now()
-            self.record_button.setText("Stop Recording")
-            self.timer_label.setVisible(True)
+            self.record_button.setText("Остановить")
         else:
             self.record_start_time = None
-            self.record_button.setText("Start Recording")
-            self.timer_label.setVisible(False)
+            self.record_button.setText("Начать запись")
+            self.timer_label.setText("")
     
     def update_timer_display(self):
         if self.record_start_time:
             elapsed = datetime.now() - self.record_start_time
-            hours = int(elapsed.total_seconds() // 3600)
-            minutes = int((elapsed.total_seconds() % 3600) // 60)
+            minutes = int(elapsed.total_seconds() // 60)
             seconds = int(elapsed.total_seconds() % 60)
-            self.timer_label.setText(
-                f"Recording Time: {hours:02d}:{minutes:02d}:{seconds:02d}"
-            )
+            self.timer_label.setText(f"{minutes:02d}:{seconds:02d}")
+
+    def get_memory_info(self):
+        mem = psutil.virtual_memory()
+        free_gb = mem.available / (1024 ** 3)
+        total_gb = mem.total / (1024 ** 3)
+        return free_gb, total_gb
+
+    def get_disk_info(self):
+        disk = psutil.disk_usage('C:\\' if os.name == 'nt' else '/')
+        free_gb = disk.free / (1024 ** 3)
+        total_gb = disk.total / (1024 ** 3)
+        return free_gb, total_gb
+
+    def update_metrics(self):
+        # CPU Usage
+        cpu = psutil.cpu_percent(interval=None)
+        self.cpu_label.setText(f"ЦП: {cpu:.0f}")
+
+        # RAM Usage
+        free_ram, total_ram = self.get_memory_info()
+        self.ram_label.setText(f"ОЗУ: {free_ram:.0f}/{total_ram:.0f}")
+
+        # Disk Usage
+        free_disk, total_disk = self.get_disk_info()
+        self.disk_label.setText(f"ПЗУ: {free_disk:.0f}/{total_disk:.0f}")
+        
+        if self.is_recording:
+            self.update_timer_display()
 
 def main():
     app = QApplication(sys.argv)
-    app.setStyle('Fusion')
     window = SystemMonitor()
     window.show()
     sys.exit(app.exec())
