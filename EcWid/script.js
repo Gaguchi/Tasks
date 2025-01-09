@@ -6,7 +6,12 @@ function renderSVG(svgContent) {
     const parts = ['bonnet', 'door_front', 'door_back', 'trunk', 'wheels'];
 
     parts.forEach(part => {
-        document.getElementById(part).addEventListener('click', handlePartClick);
+        const element = document.getElementById(part);
+        if (element) {
+            element.addEventListener('click', handlePartClick);
+        } else {
+            console.warn(`Element with ID ${part} not found.`);
+        }
     });
 }
 
@@ -88,10 +93,11 @@ function handlePartClick(event) {
     });
 }
 
-document.addEventListener('click', function(event) {
-    if (event.target.classList.contains('ecwid-popup-closeButton')) {
-        Ecwid.Cart.get(function(cart) {
-            checkCarAssembled(cart);
-        });
-    }
-});
+function checkCartOnEvent(event) {
+    Ecwid.Cart.get(function(cart) {
+        checkCarAssembled(cart);
+    });
+}
+
+document.addEventListener('click', checkCartOnEvent);
+document.addEventListener('keydown', checkCartOnEvent);
